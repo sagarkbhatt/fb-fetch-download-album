@@ -1,7 +1,9 @@
 <?php
-
+  
     session_start();
     require_once __DIR__ . '/_includes/fbsdk/src/Facebook/autoload.php';
+    $session=$_SESSION['facebook_access_token'];
+    echo $session;
 
 
     $fb = new Facebook\Facebook([
@@ -10,9 +12,12 @@
     'default_graph_version' => 'v2.7',
     ]);
 
-    $helper = $fb->getRedirectLoginHelper();
+
+    $fb->setDefaultAccessToken($session);
+
     try {
-    $accessToken = $helper->getAccessToken();
+    $response = $fb->get('/me/albums?fields=cover_photo,photo_count,photos{link}');
+   // $userNode = $response->getGraphUser();
     } catch(Facebook\Exceptions\FacebookResponseException $e) {
     // When Graph returns an error
     echo 'Graph returned an error: ' . $e->getMessage();
@@ -23,15 +28,13 @@
     exit;
     }
 
-    if (isset($accessToken)) {
-    // Logged in!
-    $_SESSION['facebook_access_token'] = (string) $accessToken;
+     //$get_data = $response->getDecodedBody();
+     $graphEdge = $response->getGraphEdge();
+     echo "<pre>";
+     print_r( $graphEdge );
+     echo "</pre>";
+    //echo $graphEdge;
 
-    // Now you can redirect to another page and use the
-    // access token from $_SESSION['facebook_access_token']
-    header('Location: home.php');
-
-    }
 
 
 ?>

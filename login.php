@@ -10,7 +10,7 @@
     ]);
 
     $helper = $fb->getRedirectLoginHelper();
-    $permissions = ['email', 'user_likes']; // optional
+    $permissions = ['email', 'user_likes','user_location','user_photos','user_videos','user_about_me','user_posts','public_profile']; // optional
     $loginUrl = $helper->getLoginUrl('http://localhost/sagarkbhatt.github.io/login_callback.php', $permissions);
 
     echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>'
