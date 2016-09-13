@@ -48,12 +48,13 @@
         <div ng-repeat="x in data" ng-if="x.photo_count > 0">
 
             <h4 > Toatl images : {{x.photo_count}}</h4>
-
-            <div ng-repeat="img in x.photos">
+            <img ng-src ="{{ x.picture.url }}" />
+            <button class="btn btn-info" ng-click="showFull(x.photos)" >Click to View More </button> 
+           <!-- <div ng-repeat="img in x.photos">
                     <img ng-src="{{ img.images[5].source }}" />
 
             </div>
-
+            -->
         </div>
     </div>
 
@@ -69,16 +70,16 @@
 
         </div>
     </nav>
-
+<script src="assets/ngStorage.min.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js" ></script>
 
 
 <script>
 
-var app = angular.module('fbApp',[]);
+var app = angular.module('fbApp',['ngStorage']);
 
-app.controller('fbCtrl',function($scope,$http){
+app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
 $scope.welcome="Albums";
 $scope.init= function(){
 
@@ -94,7 +95,12 @@ $scope.init= function(){
 
 };
 
+$scope.showFull= function(x){
 
+    $localStorage.imageData=x;
+    $window.open('fullscreen.html');
+
+}
 });
 
 </script>

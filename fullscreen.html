@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="author" content="SagarBhatt">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Facebook Album</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+            
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js" ></script>
+
+    <script src="assets/fullScreen/jquery.chocolate.js" ></script>
+    <script src="assets/angular/angular.js"></script>
+    <style>
+
+        
+    html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+    body {
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: cover;
+    }
+
+    .container {
+    width: 728px;
+    padding: 20px;
+    background-color: rgba(0,0,0,.6);
+    border-radius: 10px;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    margin-left: -384px;
+    color: #fff;
+    }
+    
+    </style>   
+<body ng-app="fbApp" ng-controller="fbSlide" ng-init="init()">
+    
+<script src="assets/ngStorage.min.js"></script>
+<script>
+var imagesData=[];
+var app = angular.module('fbApp',['ngStorage']);
+app.controller('fbSlide',function($scope,$http,$localStorage,$window){
+
+$scope.init=function(){
+
+var data = $localStorage.imageData;
+var i=0;
+for(i=0;i<data.length;i++)
+{
+   imagesData.push( data[i].images[1].source);
+
+}
+
+
+};
+
+});
+
+$(function() {
+			$('body').chocolate({
+				images		: imagesData,
+				interval	: 4000,
+				speed		: 2000,
+			});
+		});
+</script>
+
+</body>
+
+</html>

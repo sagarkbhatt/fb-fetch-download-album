@@ -16,7 +16,7 @@
     $fb->setDefaultAccessToken($session);
 
     try {
-    $response = $fb->get('/me/albums?fields=cover_photo,photo_count,photos{link,images}');
+    $response = $fb->get('/me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url}');
    // $userNode = $response->getGraphUser();
     } catch(Facebook\Exceptions\FacebookResponseException $e) {
     // When Graph returns an error
