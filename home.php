@@ -3,7 +3,7 @@
     session_start();
     require_once __DIR__ . '/_includes/fbsdk/src/Facebook/autoload.php';
     $session=$_SESSION['facebook_access_token'];
-    echo $session;
+    //echo $session;
 
 
     $fb = new Facebook\Facebook([
@@ -16,7 +16,7 @@
     $fb->setDefaultAccessToken($session);
 
     try {
-    $response = $fb->get('/me/albums?fields=cover_photo,photo_count,photos{link}');
+    $response = $fb->get('/me/albums?fields=cover_photo,photo_count,photos{link,images}');
    // $userNode = $response->getGraphUser();
     } catch(Facebook\Exceptions\FacebookResponseException $e) {
     // When Graph returns an error
@@ -29,10 +29,14 @@
     }
 
      //$get_data = $response->getDecodedBody();
-     $graphEdge = $response->getGraphEdge();
-     echo "<pre>";
-     print_r( $graphEdge );
-     echo "</pre>";
+     $graphEdge = $response->getGraphEdge()->AsArray();
+     //$ob = $response -> getGraphObject() -> AsArray();
+     
+
+     echo json_encode($graphEdge);
+
+     //echo $obj;
+
     //echo $graphEdge;
 
 

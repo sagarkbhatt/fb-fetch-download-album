@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="author" content="SagarBhatt">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Facebook Album</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+   
+    <script src="assets/angular/angular.js"></script>
+</head>
+
+<body >
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container ">
+            <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand">FacebookAlbum</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#views">Home</a></li>
+                    <li><a href="#about">About</a></li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container content" ng-app="fbApp" ng-controller="fbCtrl" data-ng-init="init()">
+
+        <h2 > {{ welcome }}</h2>
+        <div ng-repeat="x in data" ng-if="x.photo_count > 0">
+
+            <h4 > Toatl images : {{x.photo_count}}</h4>
+
+            <div ng-repeat="img in x.photos">
+                    <img ng-src="{{ img.images[5].source }}" />
+
+            </div>
+
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <a href="#" class="navbar-brand">
+                    <span class="glyphicon glyphicon-copyright-mark">Developed By SagarBhatt</span>
+                </a>
+                </p>
+            </div>
+
+        </div>
+    </nav>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js" ></script>
+
+
+<script>
+
+var app = angular.module('fbApp',[]);
+
+app.controller('fbCtrl',function($scope,$http){
+$scope.welcome="Albums";
+$scope.init= function(){
+
+    $http.get('home.php')
+    .then(function(response){
+        //alert('Called');
+        //console.log("hi");
+        $scope.data = response.data;
+        
+        console.log(response);
+
+    });
+
+};
+
+
+});
+
+</script>
+
+</body>
+
+</html>
