@@ -1,6 +1,7 @@
 body {
     background-image: url(../res/image/back.jpg);
     background-size: cover;
+    padding :65px;
 }
 
 .col-md-4 {
