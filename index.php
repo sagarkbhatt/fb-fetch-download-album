@@ -1,6 +1,6 @@
 <?php
 
-     if(!session_id()) {
+    if(!session_id()) {
     session_start();
     }
     
@@ -47,8 +47,8 @@
 
 <div class="container content">
 <div class="jumbotron">
-<h1>Sagar Bhatt<small> (14BIT152) </small></h1>
-<h3>Institute of technology,Nirma University</h3>
+    <h1>Sagar Bhatt<small> (14BIT152) </small></h1>
+    <h3>Institute of technology,Nirma University</h3>
 </div>
 <div class="jumbotron">
    <?php echo' <a  href="'.$loginUrl . '" class="btn btn-block btn-social btn-facebook" >';
@@ -56,26 +56,26 @@
    echo ' Sign in with Facebook';
    echo ' </a> '; ?>
     
-    </div> 
+</div> 
 <div class="jumbotron">
-<h2>PHP Web Developer Assignments</h2>
-<h3>Facebook-Album Challenge</h3>
+    <h2>PHP Web Developer Assignments</h2>
+    <h3>Facebook-Album Challenge</h3>
 </div>
 </div>
 
 
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-header">
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
 
-                <a href="#" class="navbar-brand">
-                    <span class="glyphicon glyphicon-copyright-mark">Developed By SagarBhatt</span>
-                </a>
-                </p>
-            </div>
-
+            <a href="#" class="navbar-brand">
+                <span class="glyphicon glyphicon-copyright-mark">Developed By SagarBhatt</span>
+            </a>
+            </p>
         </div>
-    </nav>
+
+    </div>
+</nav>
 
 <script src="lib/js/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js" ></script>

@@ -12,8 +12,8 @@
     <title>Facebook Album</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
             
-<script src="lib/js/jquery.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js" ></script>
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js" ></script>
 
     <script src="lib/fullScreen/jquery.chocolate.js" ></script>
     <script src="lib/angular/angular.js"></script>
@@ -47,38 +47,38 @@
     }
     
     </style>   
-<body ng-app="fbApp" ng-controller="fbSlide" ng-init="init()">
+    <body ng-app="fbApp" ng-controller="fbSlide" ng-init="init()">
     
-<script src="lib/ngStorage.min.js"></script>
-<script>
-var imagesData=[];
-var app = angular.module('fbApp',['ngStorage']);
-app.controller('fbSlide',function($scope,$http,$localStorage,$window){
+    <script src="lib/ngStorage.min.js"></script>
+    <script>
+    var imagesData=[];
+    var app = angular.module('fbApp',['ngStorage']);
+    app.controller('fbSlide',function($scope,$http,$localStorage,$window){
 
-$scope.init=function(){
+    $scope.init=function(){
 
-var data = $localStorage.imageData;
-var i=0;
-for(i=0;i<data.length;i++)
-{
-   imagesData.push( data[i].images[1].source);
+    var data = $localStorage.imageData;
+    var i=0;
+    for(i=0;i<data.length;i++)
+    {
+    imagesData.push( data[i].images[1].source);
 
-}
+    }
 
 
-};
+    };
 
-});
+    });
 
-$(function() {
-			$('body').chocolate({
-				images		: imagesData,
-				interval	: 4000,
-				speed		: 2000,
-			});
-		});
-</script>
+    $(function() {
+                $('body').chocolate({
+                    images		: imagesData,
+                    interval	: 4000,
+                    speed		: 2000,
+                });
+            });
+    </script>
 
-</body>
+    </body>
 
 </html>
