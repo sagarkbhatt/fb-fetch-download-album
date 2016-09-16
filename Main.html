@@ -10,13 +10,13 @@
     <meta name="author" content="">
 
     <title>Facebook Album</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/css/app.css" />
+    <link rel="stylesheet" href="lib/css/style.css" />
    
-    <script src="assets/angular/angular.js"></script>
-    <link rel='stylesheet' href='assets/angular_loading/src/loading-bar.css' type='text/css' media='all' />
-    <script type='text/javascript' src='assets/angular_loading/src/loading-bar.js'></script>
+    <script src="lib/angular/angular.js"></script>
+    <link rel='stylesheet' href='lib/angular_loading/src/loading-bar.css' type='text/css' media='all' />
+    <script type='text/javascript' src='lib/angular_loading/src/loading-bar.js'></script>
 </head>
 
 <body >
@@ -50,11 +50,12 @@
         
         <div class="col-sm-3" ng-repeat="x in data" ng-if="x.photo_count > 0">
 
-            <h4 > Toatl images : {{x.photo_count}}</h4>
+            <h4 > Total images : {{x.photo_count}}</h4>
             <img ng-src ="{{ x.picture.url }}" width="100%" height="100%" class="img-responsive" style="min-height:252px; max-height:252px;"/>
             <hr>
             <button class="btn btn-info btn-block" ng-click="showFull(x.photos)" >Full Screen</button>
             <button class="btn btn-info btn-block" ng-click="Download(x.photos)" >Download</button> 
+            <center><input type="checkbox" value="{{x.photos}}" /></center>
            <!-- <div ng-repeat="img in x.photos">
                     <img ng-src="{{ img.images[5].source }}" />
 
@@ -62,9 +63,11 @@
             -->
         
       <hr>
-
+        
         </div>
-       
+       <button class="btn btn-danger btn-block" ng-click="DownloadSelected()" >Download Selected</button>
+       <button class="btn btn-danger btn-block" ng-click="DownloadAll()" >Download All</button>
+       <hr>
     </div>
     
     <nav class="navbar navbar-inverse navbar-fixed-bottom" >
@@ -79,9 +82,9 @@
 
         </div>
     </nav>
-<script src="assets/ngStorage.min.js"></script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js" ></script>
+<script src="lib/ngStorage.min.js"></script>
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js" ></script>
 
 
 <script>
@@ -104,6 +107,102 @@ $scope.init= function(){
 
 };
 
+$scope.DownloadAll = function(){
+
+    var x = $scope.data;
+    var albums = [] ;
+    var j=0;
+    for(i=0;i<x.length;i++){
+        if(x[i].photos!=undefined){
+        albums[j]=x[i].photos;
+        j++;
+        }
+
+    }
+    var len =albums.length;
+    var imageData = [];
+    console.log(albums);
+     var i,j;
+   i=j=0;
+   for(i=0;i<len;i++){
+
+       var x =albums[i];
+  //     console.log(x);
+      
+       for(j=0;j<x.length;j++){
+           
+           imageData.push(x[j].images[1].source);
+        
+     }
+       
+
+
+   }
+
+
+    $http({
+        method: 'POST',
+        url: 'download.php',
+        data: imageData,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).success(function(data) {
+
+        var base_url = window.location.origin;
+        $window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
+    });
+
+
+
+
+}
+
+$scope.DownloadSelected =function(){
+  
+    var album= [];
+    $(':checkbox:checked').each(function(i){
+          album[i] = $.parseJSON($(this).val());
+    });
+    console.log(album);
+    var len = album.length;
+    if(len<= 0){
+    alert('Opps,First please select albums');
+    return ;
+    }
+   var imageData =[];
+   var i,j;
+   i=j=0;
+   for(i=0;i<len;i++){
+
+       var x =album[i];
+       console.log(x);
+       for(j=0;j<x.length;j++){
+            console.log(x[j].images[1]);
+           imageData.push(x[j].images[1].source);
+       }
+       
+
+
+   }
+
+
+    $http({
+        method: 'POST',
+        url: 'download.php',
+        data: imageData,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).success(function(data) {
+
+        var base_url = window.location.origin;
+        $window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0]);   
+    });
+
+
+
+}
 $scope.showFull= function(x){
 
     $localStorage.imageData=x;
@@ -131,7 +230,8 @@ $scope.Download =function(x){
         }
     }).success(function(data) {
 
-
+        var base_url = window.location.origin;
+        $window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
     });
 
 

@@ -1,19 +1,24 @@
 <?php
 
+     if(!session_id()) {
     session_start();
-    require_once __DIR__ . '/_includes/fbsdk/src/Facebook/autoload.php';
+    }
+    
+    //session_start();
+    require_once __DIR__ . '/lib/_includes/fbsdk/src/Facebook/autoload.php';
     
     $fb = new Facebook\Facebook([
     'app_id' => '1375334972496509', // Replace {app-id} with your app id
     'app_secret' => '55cc4917fae02dcfe988a6a97c562a02',
-    'default_graph_version' => 'v2.7',
+    'default_graph_version' => 'v2.3'
+    
     ]);
 
     $helper = $fb->getRedirectLoginHelper();
-    $permissions = ['email', 'user_likes','user_location','user_photos','user_videos','user_about_me','user_posts','public_profile']; // optional
+    $permissions = ['email', 'user_photos','user_videos','user_about_me','user_posts','public_profile']; // optional
     $loginUrl = $helper->getLoginUrl('http://localhost/sagarkbhatt.github.io/login_callback.php', $permissions);
-
-    
+ 
+    session_write_close();    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +32,11 @@
     <meta name="author" content="">
 
     <title>Facebook Album</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/bootstrap_social/bootstrap-social.css" />
-    <link rel="stylesheet" href="assets/bootstrap_social/assets/css/font-awesome.css"/>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/css/app.css" />
+    <link rel="stylesheet" href="lib/css/style.css" />
+    <link rel="stylesheet" href="lib/bootstrap_social/bootstrap-social.css" />
+    <link rel="stylesheet" href="lib/bootstrap_social/assets/css/font-awesome.css"/>
    <style>
 
    </style>
@@ -72,8 +77,8 @@
         </div>
     </nav>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js" ></script>
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js" ></script>
 
 </body>
 
