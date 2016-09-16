@@ -26,8 +26,8 @@ foreach($img as $file){
     array_push($temp,$name);
     file_put_contents($name,$download_file);
 
-    if (!file_exists($name)) { die($name.' does not exist'); }
-      if (!is_readable($name)) { die($name.' not readable'); }
+//if (!file_exists($name)) { die($name.' does not exist'); }
+  //    if (!is_readable($name)) { die($name.' not readable'); }
     $zip->addFile($name);
 
     
