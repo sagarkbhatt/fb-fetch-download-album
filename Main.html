@@ -49,13 +49,13 @@
         <h2 > {{ welcome }} </h2>
         
         <div class="col-sm-3" ng-repeat="x in data" ng-if="x.photo_count > 0">
-
+            <h4 >{{x.name }}</h4>
             <h4 > Total images : {{x.photo_count}}</h4>
             <img ng-src ="{{ x.picture.url }}" width="100%" height="100%" class="img-responsive" style="min-height:252px; max-height:252px;"/>
             <hr>
-            <button class="btn btn-info btn-block" ng-click="showFull(x.photos)" >Full Screen</button>
-            <button class="btn btn-info btn-block" ng-click="Download(x.photos)" >Download</button> 
-            <center><input type="checkbox" value="{{x.photos}}" /></center>
+            <button class="btn btn-info btn-block" ng-click="showFull(x.photos)" >Slideshow</button>
+            <button class="btn btn-info btn-block" ng-click="Download(x.photos)" >Download This Album</button> 
+            <center><input type="checkbox" value="{{x}}" /></center>
            <!-- <div ng-repeat="img in x.photos">
                     <img ng-src="{{ img.images[5].source }}" />
 
@@ -170,23 +170,40 @@ $scope.DownloadSelected =function(){
     alert('Opps,First please select albums');
     return ;
     }
-    var imageData =[];
+    var imageData = [];
     var i,j;
     i=j=0;
+    
+
     for(i=0;i<len;i++){
 
+       var albumData ={
+        name:'',
+        img:[]
+
+        };
        var x =album[i];
+       albumData.name =x.name;
+       console.log(x.name);
        console.log(x);
+       x=x.photos;
+     try{
        for(j=0;j<x.length;j++){
             console.log(x[j].images[1]);
-           imageData.push(x[j].images[1].source);
+           
+           albumData.img.push(x[j].images[1].source);
+           //imageData.push(x[j].images[1].source);
        }
-       
+       imageData.push(albumData);
+     }catch(e){
 
-
+         
+     }
+       console.log(imageData);
+       //JSON.stringify(imageData);
     }
 
-
+    
     $http({
         method: 'POST',
         url: 'download.php',
@@ -195,12 +212,12 @@ $scope.DownloadSelected =function(){
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).success(function(data) {
-
+        console.log(data);
         var base_url = window.location.origin;
-        $window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0]);   
+        $window.open(base_url+'/sagarkbhatt.github.io/'+data[0]);   
     });
 
-
+    
 
 }
 $scope.showFull= function(x){
