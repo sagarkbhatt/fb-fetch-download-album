@@ -110,54 +110,66 @@ $scope.init= function(){
 $scope.DownloadAll = function(){
 
     var x = $scope.data;
-    var albums = [] ;
-    var j=0;
-    for(i=0;i<x.length;i++){
-        if(x[i].photos!=undefined){
-        albums[j]=x[i].photos;
-        j++;
-        }
-
+    var album = x ;
+    var len = album.length;
+    if(len<= 0){
+    alert('Opps,First please select albums');
+    return ;
     }
-    var len =albums.length;
     var imageData = [];
-    console.log(albums);
     var i,j;
     i=j=0;
+    
+
     for(i=0;i<len;i++){
 
-       var x =albums[i];
-    //console.log(x);
-      
+       var albumData ={
+        name:'',
+        img:[]
+
+        };
+       var x =album[i];
+       albumData.name =x.name;
+       console.log(x.name);
+       console.log(x);
+       x=x.photos;
+     try{
        for(j=0;j<x.length;j++){
+            console.log(x[j].images[1]);
            
-           imageData.push(x[j].images[1].source);
-        
+           albumData.img.push(x[j].images[1].source);
+           //imageData.push(x[j].images[1].source);
+       }
+       imageData.push(albumData);
+     }catch(e){
+
+         
      }
-       
+       console.log(imageData);
+       //JSON.stringify(imageData);
+    }
 
-
-   }
-
-
+    
     $http({
         method: 'POST',
-        url: 'download.php',
+        url: 'downloadFolder.php',
         data: imageData,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).success(function(data) {
-
+        console.log(data);
         var base_url = window.location.origin;
-        $window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
+        $window.open(base_url+'/sagarkbhatt.github.io/'+data[0]);   
     });
 
 
+   }
 
 
-    }
 
+
+   
 $scope.DownloadSelected =function(){
   
     var album= [];
@@ -206,7 +218,7 @@ $scope.DownloadSelected =function(){
     
     $http({
         method: 'POST',
-        url: 'download.php',
+        url: 'downloadFolder.php',
         data: imageData,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
