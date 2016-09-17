@@ -1,10 +1,24 @@
-# Project Title
+# Facebook-Album Challenge
 
-One Paragraph of project description goes here
+This web application authenticates usr using Facebook authentication and fetches user's album data.
+It allows user to download album with different options.
+User can download particular album,multiple album and all album.
+As user clicks on one of the download option, User will able to download his album from unique link in .zip format.
 
-## Getting Started
+## Code Example
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+You have to first chage configuration file ``_fgConfig.php_`` to run project.
+
+```
+$fb = new Facebook\Facebook([
+'app_id' => 'Your app-id', 
+'app_secret' => 'Your app-secret',
+'default_graph_version' => 'v2.7'
+
+]);
+
+```
+
 
 ### Prerequisities
 

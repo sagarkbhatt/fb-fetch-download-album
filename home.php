@@ -9,14 +9,16 @@
     $session=$_SESSION['facebook_access_token'];
     //echo $session;
 
-
+    /*
     $fb = new Facebook\Facebook([
     'app_id' => '1375334972496509', // Replace {app-id} with your app id
     'app_secret' => '55cc4917fae02dcfe988a6a97c562a02',
     'default_graph_version' => 'v2.7',
     'persistent_data_handler'=>'session'
     ]);
+    */
 
+    require_once __DIR__ . '/fbConfig.php';
 
     $fb->setDefaultAccessToken($session);
 

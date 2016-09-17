@@ -7,13 +7,16 @@
     require_once __DIR__ . '/lib/_includes/fbsdk/src/Facebook/autoload.php';
 
 
-
+    /*
     $fb = new Facebook\Facebook([
     'app_id' => '1375334972496509', // Replace {app-id} with your app id
     'app_secret' => '55cc4917fae02dcfe988a6a97c562a02',
     'default_graph_version' => 'v2.3'
     
     ]);
+    */
+
+    require_once __DIR__ . '/fbConfig.php';
 
     $helper = $fb->getRedirectLoginHelper();
     //$_SESSION['FBRLH_state']=$_GET['state'];
