@@ -2,12 +2,12 @@
 
 This web application authenticates usr using Facebook authentication and fetches user's album data.
 It allows user to download album with different options.
-User can download particular album,multiple album and all album.
-As user clicks on one of the download option, User will able to download his album from unique link in .zip format.
+User will be given options to download particular album,multiple album and all album.
+As user clicks on one of the download option, User will be able to download his album from unique link in .zip format.
 
 ## Code Example
 
-You have to first chage configuration file ``_fgConfig.php_`` to run project.
+You have to first chage configuration file ``fgConfig.php`` to run project successfully.
 
 ```
 $fb = new Facebook\Facebook([
@@ -18,6 +18,17 @@ $fb = new Facebook\Facebook([
 ]);
 
 ```
+In this project I needs user's permission to get access of user's album.
+Here I made a call to Facebook graph api to get user's album information.
+If you need more or less information you can edit this line in home.php
+You will get your response in php format.
+
+```
+$response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name');
+
+```
+
+  
 
 
 ### Prerequisities
