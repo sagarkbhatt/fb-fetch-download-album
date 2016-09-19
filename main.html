@@ -65,8 +65,11 @@
             <hr>
         
         </div>
+       
        <button class="btn btn-danger btn-block" ng-click="DownloadSelected()" >Download Selected</button>
        <button class="btn btn-danger btn-block" ng-click="DownloadAll()" >Download All</button>
+       
+       <button ng-show="downloadLink" class="btn btn-success btn-block" ng-click="DownloadReady()"><b>Your download link: {{ downloadLink }} </b></button>>
        <hr>
     </div>
     
@@ -106,6 +109,11 @@ $scope.init= function(){
     });
 
 };
+
+$scope.DownloadReady =function(){
+
+ $window.open($scope.downloadLink);   
+}
 
 $scope.DownloadAll = function(){
 
@@ -160,7 +168,8 @@ $scope.DownloadAll = function(){
     }).success(function(data) {
         console.log(data);
         var base_url = window.location.origin;
-        $window.open(base_url+'/sagarkbhatt.github.io/'+data[0]);   
+        $scope.downloadLink= base_url+'/sagarkbhatt.github.io'+'/'+data[0] ;
+        //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0]);   
     });
 
 
@@ -226,7 +235,8 @@ $scope.DownloadSelected =function(){
     }).success(function(data) {
         console.log(data);
         var base_url = window.location.origin;
-        $window.open(base_url+'/sagarkbhatt.github.io/'+data[0]);   
+        $scope.downloadLink= base_url+'/sagarkbhatt.github.io'+'/'+data[0] ;
+        //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0]);   
     });
 
     
@@ -260,7 +270,8 @@ $scope.Download =function(x){
     }).success(function(data) {
 
         var base_url = window.location.origin;
-        $window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
+        $scope.downloadLink= base_url+'/sagarkbhatt.github.io'+'/'+data[0] ;
+        //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
     });
 
 

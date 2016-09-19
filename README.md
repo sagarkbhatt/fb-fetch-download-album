@@ -1,13 +1,13 @@
 # Facebook-Album Challenge
-
-This web application authenticates usr using Facebook authentication and fetches user's album data.
+This web application authenticates user using Facebook authentication and fetches user's album data.
 It allows user to download album with different options.
-User will be given options to download particular album,multiple album and all album.
-As user clicks on one of the download option, User will be able to download his album from unique link in .zip format.
+User can have options to download particular album,multiple albums or all albums.
+Whenever user clicks on one of the download option, User can download album in .zip format via unique link.
 
 ## Code Example
+As a first mandatory step, change configuration file named as ``fgConfig.PHP`` with following code snippet:
 
-You have to first chage configuration file ``fgConfig.php`` to run project successfully.
+Code snippet:
 
 ```
 $fb = new Facebook\Facebook([
@@ -18,47 +18,57 @@ $fb = new Facebook\Facebook([
 ]);
 
 ```
-In this project I needs user's permission to get access of user's album.
-Here I made a call to Facebook graph api to get user's album information.
-If you need more or less information you can edit this line in home.php
-You will get your response in php format.
+In this project, application needs user's permissions to get access of user's album data.
+Application is making a call to Facebook Graph API to get necessary data.
+To control access of data you can have options which requires to be setup in home.PHP file.
+
+By setting up home.PHP, resonse will be retrieved in json format as below:
+
+Code snippet:
 
 ```
 $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name');
 
 ```
+Once data got retrieved,application redirects user to ``main.html`` which is responsible to manipulate data as per requirements.
 
-  
+All client side logic is getting executed by ``AngularJs``. 
 
+There are main three functions:
+1. Download
+2. DownloadSelected
+3. DownloadAll 
 
-### Prerequisities
+These functions take some processed data and pass the same to PHP api.
+PHP api fetches, downloads content to server and provides a unique user's album link which contains downloadable .zip format file. 
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Stay what the step will be
+Code snippet:
 
 ```
-Give the example
-```
+$download_file=file_get_contents($file);
+//Get content(image) from url
 
-And repeat
+file_put_contents($name,$download_file);
+//stores data in server
+//$name is name of file
+
+$zip->addFile($name);
+//Adds file in zip
 
 ```
-until finished
-```
+### Prerequisites
+1)PHP Version 5.5 
+2)Mb string support
 
-End with an example of getting some data out of the system or using it for a little demo
+### Third party libraries
+1)Facebook PHP sdk V5
+2)AngularJS V1
+3)Jquery
+4)Bootstrap
+5)Angular-loading-bar 
+6)Jquery slide show
 
 ## Running the tests
-
 Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
@@ -69,13 +79,6 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 

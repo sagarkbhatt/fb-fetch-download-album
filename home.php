@@ -5,7 +5,7 @@
     }
     
     //session_start();
-    require_once __DIR__ . '/lib/_includes/fbsdk/src/Facebook/autoload.php';
+    require_once  'lib/_includes/fbsdk/src/Facebook/autoload.php';
     $session=$_SESSION['facebook_access_token'];
     //echo $session;
 
@@ -18,7 +18,7 @@
     ]);
     */
 
-    require_once __DIR__ . '/fbConfig.php';
+    require_once 'fbConfig.php';
 
     $fb->setDefaultAccessToken($session);
 

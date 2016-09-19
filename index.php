@@ -5,7 +5,7 @@
     }
     
     //session_start();
-    require_once __DIR__ . '/lib/_includes/fbsdk/src/Facebook/autoload.php';
+    require_once  'lib/_includes/fbsdk/src/Facebook/autoload.php';
     
     /*$fb = new Facebook\Facebook([
     'app_id' => '1375334972496509', // Replace {app-id} with your app id
@@ -13,12 +13,12 @@
     'default_graph_version' => 'v2.3'
     
     ]);*/
-    require_once __DIR__ . '/fbConfig.php';
+    require_once 'fbConfig.php';
 
 
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_photos','user_videos','user_about_me','user_posts','public_profile']; // optional
-    $loginUrl = $helper->getLoginUrl('http://localhost/sagarkbhatt.github.io/login_callback.php', $permissions);
+    $loginUrl = $helper->getLoginUrl($callBack, $permissions);
  
     session_write_close();    
 ?>
