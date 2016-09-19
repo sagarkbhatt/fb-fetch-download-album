@@ -5,7 +5,7 @@ User can have options to download particular album,multiple albums or all albums
 Whenever user clicks on one of the download option, User can download album in .zip format via unique link.
 
 ## Code Example
-As a first mandatory step, change configuration file named as ``fgConfig.PHP`` with following code snippet:
+As a first mandatory step, change configuration file named as **fgConfig.PHP** with following code snippet:
 
 Code snippet:
 
@@ -30,9 +30,9 @@ Code snippet:
 $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,images},picture{url},name');
 
 ```
-Once data got retrieved,application redirects user to ``main.html`` which is responsible to manipulate data as per requirements.
+Once data got retrieved,application redirects user to **main.html** which is responsible to manipulate data as per requirements.
 
-Most of client side logic is build with the help of ``AngularJs Framework``. 
+Most of client side logic is build with the help of **AngularJs Framework**. 
 
 There are main three functions:
 1. Download
@@ -103,6 +103,7 @@ phpunit tests/
 * Microsoft visual studio code.
 * Git
 
-## Authors
+## Author
 
-* **Sagar Bhatt** - *Initial work* - [Facebook-Challenge](https://github.com/sagarkbhatt)
+#**Sagar Bhatt**
+##[Github Profile](https://github.com/sagarkbhatt)
