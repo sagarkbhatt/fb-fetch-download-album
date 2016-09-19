@@ -1,5 +1,5 @@
 # Facebook-Album Challenge
-### [Live Demo](htttp://sagarkbhatt.me/)
+### Live Demo: htttp://sagarkbhatt.me/
 
 This web application authenticates user using Facebook authentication and fetches user's album data.
 It allows user to download album with different options.
@@ -108,5 +108,5 @@ phpunit tests/
 
 ## Author
 
-#**Sagar Bhatt**
-##[Github Profile](https://github.com/sagarkbhatt)
+##**Sagar Bhatt**
+###[Github Profile](https://github.com/sagarkbhatt)
