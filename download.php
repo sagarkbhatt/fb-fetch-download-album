@@ -35,14 +35,16 @@ foreach($img as $file){
 
 $zip->close();
 //echo 'Exist or not'.file_exists($filename);
+// close zip
 
 foreach($temp as $n){
 	
 	unlink($n);
+	//removing file from server
 }
 $filename=array($filename);
 echo json_encode($filename);
-# close zip
+
 
 
 ?>

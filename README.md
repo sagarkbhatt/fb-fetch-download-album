@@ -32,7 +32,7 @@ $response = $fb->get('me/albums?fields=cover_photo,photo_count,photos{link,image
 ```
 Once data got retrieved,application redirects user to ``main.html`` which is responsible to manipulate data as per requirements.
 
-All client side logic is getting executed by ``AngularJs``. 
+Most of client side logic is build with the help of ``AngularJs Framework``. 
 
 There are main three functions:
 1. Download
@@ -57,59 +57,52 @@ $zip->addFile($name);
 
 ```
 ### Prerequisites
-1)PHP Version 5.5 
-2)Mb string support
+
+1. PHP 5.4 or greater 
+2. The mbstring extension
+
+Apart from this you have to also check following configuration in your php config file.
+
+1. allow_url_include = On
+2. allow_url_fopen = On
+
 
 ### Third party libraries
-1)Facebook PHP sdk V5
-2)AngularJS V1
-3)Jquery
-4)Bootstrap
-5)Angular-loading-bar 
-6)Jquery slide show
+
+1. Facebook PHP sdk V5
+2. PHPUnit 5.5
+3. AngularJS V1
+4. Jquery
+5. Bootstrap
+6. Angular-loading-bar 
+7. Jquery slide show
 
 ## Running the tests
-Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+To run test cases,You have to first install PHPUnit.
 
-Explain what these tests test and why
+Code snippet:
 
 ```
-Give an example
+1. wget https://phar.phpunit.de/phpunit.phar
+
+2. chmod +x phpunit.phar
+
+3. sudo mv phpunit.phar /usr/local/bin/phpunit
+
 ```
+After installation,Go to project directory and run following command in terminal.
 
+```
+phpunit tests/
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+``` 
 
 ## Built With
 
-* Dropwizard - Bla bla bla
-* Maven - Maybe
-* Atom - ergaerga
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* Microsoft visual studio code.
+* Git
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* **Sagar Bhatt** - *Initial work* - [Facebook-Challenge](https://github.com/sagarkbhatt)
