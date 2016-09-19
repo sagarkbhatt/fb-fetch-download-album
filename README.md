@@ -1,4 +1,6 @@
 # Facebook-Album Challenge
+### [Live Demo](sagarkbhatt.me)
+
 This web application authenticates user using Facebook authentication and fetches user's album data.
 It allows user to download album with different options.
 User can have options to download particular album,multiple albums or all albums.
@@ -35,6 +37,7 @@ Once data got retrieved,application redirects user to **main.html** which is res
 Most of client side logic is build with the help of **AngularJs Framework**. 
 
 There are main three functions:
+
 1. Download
 2. DownloadSelected
 3. DownloadAll 
