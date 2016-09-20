@@ -11,6 +11,8 @@ session_start();
 
 $_SESSION['picasaAlbum']=$albumName;
 $_SESSION['picasaImg']= $img;
+$_SESSION['picasaData']=$request;
+
 $op='Data written';
 echo json_encode($op);
 ?>

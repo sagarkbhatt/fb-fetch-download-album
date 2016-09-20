@@ -9,11 +9,14 @@ $albumName=$_SESSION['picasaAlbum'];
 
 $img=$_SESSION['picasaImg'];
 
+
+include 'picasaConfig.php';
+
 if(isset($albumName) and isset($img)){
     $uploader = RemoteImageUploader\Factory::create('Picasa', array(
         'cacher'         => $cacher,
-        'api_key'        => '98076226649-5kuqs6muv780l5l6thdmo1sdkdl0t6rq.apps.googleusercontent.com',
-        'api_secret'     => '2xOZw10g68p2VUqvs4R3rP-l',
+        'api_key'        => $api_key,
+        'api_secret'     => $api_secret,
 
         // if `album_id` is `null`, this script will automatic
         // create a new album for storage every 2000 photos

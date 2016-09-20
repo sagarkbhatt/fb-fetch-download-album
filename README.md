@@ -5,7 +5,7 @@ This web application authenticates user using Facebook authentication and fetche
 It allows user to download album with different options.
 User can have options to download particular album,multiple albums or all albums.
 Whenever user clicks on one of the download option, User can download album in .zip format via unique link.
-Apart from download options user can easily move particular album to Google+/Picasa.
+Apart from download options user can easily move particular album to Google+/Picasa album.
 
 ## Code Example
 As a first mandatory step, change configuration file named as **fgConfig.PHP** with following code snippet:

@@ -6,7 +6,7 @@ class fbTest extends TestCase
 {
 
 
-    public function testConfig()
+    public function testFbConfig()
     {
  
         
@@ -23,6 +23,15 @@ class fbTest extends TestCase
 
         require 'fbConfig.php';
         $this->assertEquals($callBack,'http://sagarkbhatt.me/login_callback.php');  
+    }
+
+    public function testPicasaConfig(){
+
+        require 'picasaConfig.php';
+
+        $this->assertNotEmpty($api_key);
+        $this->assertNotEmpty($api_secret);
+        
     }
 
 
