@@ -1,0 +1,18 @@
+{
+    "minimum-stability": "dev",
+    "name": "ptcong/php-http-class",
+    "description": "A simple and powerful Http Client library used for sending request and get response like a browser.",
+    "keywords": ["php", "http", "request", "curl", "fsockopen"],
+    "license": "MIT",
+    "authors": [{
+        "name": "Phan Thanh Cong",
+        "email": "ptcong90@gmail.com",
+        "homepage": "http://ptcong.com"
+    }],
+    "require": {
+        "php": ">=5.0"
+    },
+    "autoload": {
+        "psr-0": { "EasyRequest": "" }
+    }
+}

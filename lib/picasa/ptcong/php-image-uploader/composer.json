@@ -1,0 +1,21 @@
+{
+    "name": "ptcong/php-image-uploader",
+    "description": "Library for uploading image to picasa, flickr, imgur, imageshack",
+    "keywords": ["php", "http", "image uploader", "remote upload"],
+    "license": "MIT",
+    "authors": [{
+        "name": "Phan Thanh Cong",
+        "email": "ptcong90@gmail.com",
+        "homepage": "http://ptcong.com"
+    }],
+    "require": {
+        "php": ">=5.3",
+        "ptcong/php-http-class": "^3.0",
+        "doctrine/cache": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "RemoteImageUploader\\": "src/RemoteImageUploader/"
+        }
+    }
+}

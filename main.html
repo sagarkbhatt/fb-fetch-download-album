@@ -54,7 +54,8 @@
             <img ng-src ="{{ x.picture.url }}" width="100%" height="100%" class="img-responsive" style="min-height:252px; max-height:252px;"/>
             <hr>
             <button class="btn btn-info btn-block" ng-click="showFull(x.photos)" >Slideshow</button>
-            <button class="btn btn-info btn-block" ng-click="Download(x.photos)" >Download This Album</button> 
+            <button class="btn btn-info btn-block" ng-click="Download(x.photos)" >Download This Album</button>
+            <button class="btn btn-info btn-block"   ng-click="movePicasa(x)" >Move to picasa</button> 
             <center><input type="checkbox" value="{{x}}" /></center>
            <!-- <div ng-repeat="img in x.photos">
                     <img ng-src="{{ img.images[5].source }}" />
@@ -95,6 +96,7 @@
 var app = angular.module('fbApp',['ngStorage','angular-loading-bar']);
 
 app.controller('fbCtrl',function($scope,$http,$localStorage,$window){
+
 $scope.welcome="Albums";
 $scope.init= function(){
 
@@ -242,6 +244,47 @@ $scope.DownloadSelected =function(){
     
 
 }
+
+$scope.movePicasa =function(x){
+
+       var albumData ={
+        name:'',
+        img:[]
+
+        };
+
+        albumData.name =x.name;
+
+        var photos = x.photos;
+
+         for(j=0;j<photos.length;j++){
+             
+          try{   
+           albumData.img.push(photos[j].images[1].source);
+          }catch(e){
+
+          }
+       }
+       
+
+       
+
+    $http({
+        method: 'POST',
+        url: 'picasaData.php',
+        data: albumData,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).success(function(data) {
+        console.log(data);
+        var base_url = window.location.origin;
+
+       // $scope.downloadLink= base_url+'/sagarkbhatt.github.io'+'/'+data[0] ;
+        $window.open(base_url+'/picasa.php');   
+    });
+     
+}
 $scope.showFull= function(x){
 
     $localStorage.imageData=x;
@@ -270,6 +313,7 @@ $scope.Download =function(x){
     }).success(function(data) {
 
         var base_url = window.location.origin;
+        
         $scope.downloadLink= base_url+'/sagarkbhatt.github.io'+'/'+data[0] ;
         //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
     });
