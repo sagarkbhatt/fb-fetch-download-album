@@ -74,12 +74,21 @@ Apart from this you have to also check following configuration in your php confi
 ### Third party libraries
 
 1. Facebook PHP sdk V5
+-https://developers.facebook.com/docs/php/gettingstarted
 2. PHPUnit 5.5
+-https://phpunit.de/
 3. AngularJS V1
+-https://angularjs.org/
 4. Jquery
+-https://jquery.com/download/
 5. Bootstrap
+-http://v4-alpha.getbootstrap.com/
 6. Angular-loading-bar 
+-https://github.com/chieffancypants/angular-loading-bar
 7. Jquery slide show
+-http://www.jqueryscript.net/slideshow/Simplest-Fullscreen-Background-Slideshow-With-jQuery-Chocolate-js.html
+8. php-remote-image-uploader
+-https://github.com/ptcong/php-remote-image-uploader
 
 ## Running the tests
 
