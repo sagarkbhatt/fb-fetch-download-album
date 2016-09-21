@@ -180,6 +180,7 @@ $scope.DownloadAll = function(){
        
         console.log(data);
         var base_url = window.location.origin;
+        alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
         $scope.downloadLink= base_url+'/'+data[0] ;
         //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0]);   
     });
@@ -247,6 +248,7 @@ $scope.DownloadSelected =function(){
     }).success(function(data) {
         console.log(data);
         var base_url = window.location.origin;
+        alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
         $scope.downloadLink= base_url+'/'+data[0] ;
         //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0]);   
     });
@@ -327,7 +329,7 @@ $scope.Download =function(x){
 
         console.log(data);
         var base_url = window.location.origin;
-        
+        alert('Find download link at bottom of page. \nInfo:This site uses Pop-up windows. \nPlease disable any Pop-up blocker');
         $scope.downloadLink= base_url+'/'+data[0] ;
         //$window.open(base_url+'/sagarkbhatt.github.io'+'/'+data[0])   
     });
