@@ -1,5 +1,4 @@
 # Facebook-Album Challenge
-### Live Demo : www.sagarkbhatt.me
 
 This web application authenticates user using Facebook authentication and fetches user's album data.
 It allows user to download album with different options.
