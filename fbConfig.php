@@ -1,7 +1,7 @@
 <?php
 
-    $app_id='1375334972496509';
-    $app_sec='55cc4917fae02dcfe988a6a97c562a02';
+    $app_id='*****************';
+    $app_sec='*****************';
     $g_v='v2.7';
     $callBack='http://sagarkbhatt.me/login_callback.php';
 
